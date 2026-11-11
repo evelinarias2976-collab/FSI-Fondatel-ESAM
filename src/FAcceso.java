@@ -26,7 +26,7 @@ public class FAcceso extends javax.swing.JFrame {
             System.exit(0);
         });
 
-        if (cnx.conectar("localhost", "fondatel", "manzana", "1234") == 0) {
+        if (cnx.conectar("localhost", "fondatel", "root", "") == 0) {
             JOptionPane.showMessageDialog(this, "Sin conexión. La ventana se cerrará...");
             System.exit(0);
         }

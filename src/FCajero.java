@@ -19,6 +19,7 @@ public class FCajero extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         if (cnx.conectar("localhost", "fondatel", "root", "") == 1) {
+            cnx.entablar("SELECT * FROM ordenes", TConsulta);
         } else {
             JOptionPane.showMessageDialog(this, "Sin conexión. La ventana se cerrará...");
             System.exit(0);
@@ -54,9 +55,8 @@ public class FCajero extends javax.swing.JFrame {
         BBuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         CBEstacion = new javax.swing.JComboBox();
-        BFiltrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TMediciones = new javax.swing.JTable();
+        TConsulta = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -71,7 +71,7 @@ public class FCajero extends javax.swing.JFrame {
         jPanel5.setMaximumSize(new java.awt.Dimension(600, 100));
         jPanel5.setMinimumSize(new java.awt.Dimension(600, 100));
         jPanel5.setPreferredSize(new java.awt.Dimension(600, 100));
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         BTodo.setText("TODO");
         BTodo.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +104,8 @@ public class FCajero extends javax.swing.JFrame {
             }
         });
         jPanel5.add(BHoy);
+
+        B4.setText("...");
         jPanel5.add(B4);
 
         jToolBar1.add(jPanel5);
@@ -176,33 +178,24 @@ public class FCajero extends javax.swing.JFrame {
         CBEstacion.setMinimumSize(new java.awt.Dimension(100, 50));
         CBEstacion.setPreferredSize(new java.awt.Dimension(0, 50));
 
-        BFiltrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BFiltrar.setPreferredSize(new java.awt.Dimension(0, 50));
-        BFiltrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        BFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BFiltrarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(CBEstacion, 0, 172, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(CBEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CBEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(BFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(CBEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         jToolBar1.add(jPanel3);
 
-        TMediciones.setModel(new javax.swing.table.DefaultTableModel(
+        TConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -213,16 +206,15 @@ public class FCajero extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TMediciones);
+        jScrollPane1.setViewportView(TConsulta);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 204));
-        jLabel1.setText("Ventana de Visitantes");
+        jLabel1.setText("Ventana de Cajero");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Consulta de Mediciones Metereológicas");
 
         LUsuario.setBackground(new java.awt.Color(255, 255, 255));
         LUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,10 +299,6 @@ public class FCajero extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BBuscarActionPerformed
 
-    private void BFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFiltrarActionPerformed
-
-    }//GEN-LAST:event_BFiltrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -349,7 +337,6 @@ public class FCajero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton B4;
     private javax.swing.JButton BBuscar;
-    private javax.swing.JButton BFiltrar;
     private javax.swing.JToggleButton BHoy;
     private javax.swing.JToggleButton BMaxMin;
     private javax.swing.JToggleButton BPromedio;
@@ -358,7 +345,7 @@ public class FCajero extends javax.swing.JFrame {
     private javax.swing.JLabel LUsuario;
     private javax.swing.JSpinner SFechaFin;
     private javax.swing.JSpinner SFechaIni;
-    private javax.swing.JTable TMediciones;
+    private javax.swing.JTable TConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
