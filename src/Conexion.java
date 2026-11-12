@@ -255,6 +255,7 @@ public class Conexion {
             }
 
             if (datos.size() > 0) {
+                datos.add(0, "Todos");
                 DefaultComboBoxModel cbm = new DefaultComboBoxModel(datos.toArray());
                 box.setModel(cbm);
             }
